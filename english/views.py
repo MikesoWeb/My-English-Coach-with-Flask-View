@@ -24,7 +24,7 @@ class IndexView(View):
 
     def dispatch_request(self):
         count = English.query.count()
-        from sqlalchemy.sql.expression import func, select
+        from sqlalchemy.sql.expression import func
         random_word = English.query.order_by(func.random()).first()
         return render_template(self.template_name, title=self.title, count=count, random_word=random_word)
 
