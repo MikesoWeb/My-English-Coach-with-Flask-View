@@ -16,7 +16,7 @@ class Config(object):
 class ConfigDebug(Config):
     DEBUG = True
     TEMPLATES_AUTO_RELOAD = True
-    # SERVER_NAME = 'localhost:5567'
+    SERVER_NAME = 'localhost:5567'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///english_app.db'
 
 

@@ -22,7 +22,7 @@ def create_app():
     bootstrap5.init_app(app)
     search.init_app(app)
 
-    search.create_index(update=True)
+    # search.create_index(update=True)
     return app
 
 
