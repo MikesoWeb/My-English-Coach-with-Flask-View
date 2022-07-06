@@ -1,0 +1,21 @@
+{% extends 'english/layout.html' %}
+
+{% block content %}
+
+
+<div class="container d-flex justify-content-center h-100">
+
+    <form action="{{ url_for('update')}}" method="post" class="update_form  align-self-center">
+        <input type="text" name="word" class="word_input"
+               placeholder="Введите английское слово для обновления его перевода" required
+               pattern="^[a-zA-Z .!`?]+$"><br>
+        <input type="text" name="translate" class="translate_input" placeholder="Введите новый перевод слова на русском"
+               required
+               pattern="^[а-яА-ЯёЁ .!`?]+$"><br>
+        <input type="submit" value="Обновить" class="btn btn-outline-success mt-2">
+    </form>
+
+</div>
+
+
+{% endblock content %}
