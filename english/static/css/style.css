@@ -19,6 +19,8 @@ body{
     flex: 1 0 auto;
 }
 
+/* Формы */
+
 .word_input,
 .translate_input{
     width: 640px;
@@ -26,6 +28,8 @@ body{
     margin-top: 30px;
 
 }
+
+/* Выпадающий блок Забыли перевод? на главной */
 
 .expandable {
   background: #fff;

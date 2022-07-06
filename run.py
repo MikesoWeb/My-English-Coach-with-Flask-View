@@ -1,5 +1,6 @@
 from english import app_ctx, db
 
+# импорт марншрутов для работы приложения
 from english.routes import IndexView
 
 if __name__ == '__main__':

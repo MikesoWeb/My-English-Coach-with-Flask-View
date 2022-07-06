@@ -5,7 +5,6 @@ from sqlalchemy.exc import IntegrityError
 from english import app_ctx
 from english.models import English, db
 from flask import render_template, request, flash, url_for, redirect
-from sqlalchemy.sql.expression import func
 
 
 @app_ctx.errorhandler(404)
@@ -25,7 +24,7 @@ class IndexView(View):
 
     def dispatch_request(self):
         count = English.query.count()
-
+        from sqlalchemy.sql.expression import func
         random_word = English.query.order_by(func.random()).first()
         return render_template(self.template_name, title=self.title, count=count, random_word=random_word)
 
@@ -121,9 +120,6 @@ class ShowView(MethodView):
         return render_template(self.template_name, title=self.title, posts=posts)
 
 
-#  https://github.com/MikesoWeb/my_english_couch_flask_peewee
-
-
 class AboutView(View):
     def __init__(self, template_name, title):
         self.template_name = template_name
@@ -135,13 +131,12 @@ class AboutView(View):
 
 @app_ctx.route('/search')
 def search():
+    """
+    Реализует поиск по модели English по полям word, translate
+    """
     try:
         keyword = request.args.get('q')
-        print('keyword', keyword)
         searching = English.query.msearch(keyword, fields=['word', 'translate'], limit=10)
-        if not searching:
-            message = Markup(f'Слово <mark>{keyword}</mark> в базе не найдено!')
-            flash(message, category='error')
         return render_template('english/result_search.html', searching=searching, keyword=keyword)
     except AttributeError:
         return redirect(url_for('index'))

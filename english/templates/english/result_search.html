@@ -4,18 +4,30 @@
 
 <div class="container d-flex justify-content-center h-100">
     <div class="w-100">
-        <p class=" text-center p-2 bg-info bg-opacity-10 border border-info border-bottom-0 rounded-end align-self-center">
+        <p class=" text-center p-1 bg-info bg-opacity-10 border border-info border-bottom-0 rounded-end align-self-center">
             Результат поиска
             <mark><b>{{ keyword }}</b></mark>
             ({{ searching.count() }})
         </p>
         {% if searching.count() %}
-        {% for phrase in searching %}
-        <ol class="list-unstyled w-50 m-auto">
-            <li class="d-flex justify-content-between"><i class="text-success">{{ phrase.word }}</i> -
-                <i class="text-info">{{ phrase.translate }}</i>
-        </ol>
-        {% endfor %}
+        <table class="w-100 m-auto">
+            <tr class="text-center text-primary bg-secondary bg-opacity-10 rounded-top">
+                <th>Фраза</th>
+                <th>Перевод</th>
+
+            </tr>
+            {% for phrase in searching %}
+
+            <tr class="text-center text-success">
+                <td class="">
+                    <p class="">{{ phrase.word }}</p>
+                </td>
+
+                <td class="text-center"><p class="text-info">{{ phrase.translate }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 
     {% else %}

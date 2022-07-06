@@ -1,25 +1,29 @@
 import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+#  os
+# load_dotenv(dotenv_path=os.path.join(os.getcwd(), '.env'))
+#  Path
+load_dotenv(dotenv_path=Path('.') / '.env')
 
 
 class Config(object):
-    SQLALCHEMY_DATABASE_URI = 'sqlite://memory:'
-    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
+    SQLALCHEMY_TRACK_MODIFICATIONS = os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
     SECRET_KEY = os.urandom(32)
-    MSEARCH_ENABLE = True
-    MSEARCH_INDEX_NAME = 'msearch'
-    MSEARCH_PRIMARY_KEY = 'id'
-    TEMPLATES_AUTO_RELOAD = False
+    TEMPLATES_AUTO_RELOAD = os.getenv('TEMPLATES_AUTO_RELOAD')
     DEBUG = False
-    TESTING = False
+    TESTING = os.getenv('TESTING')
 
 
 class ConfigDebug(Config):
-    DEBUG = True
-    TEMPLATES_AUTO_RELOAD = True
-    # SERVER_NAME = 'localhost:5567'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///english_app.db'
+    FLASK_APP = os.getenv('FLASK_APP')
+    DEBUG = os.getenv('DEBUG')
+    SERVER_NAME = os.getenv('SERVER_NAME')
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
 
 
 class ConfigProd(Config):
-    PROPAGATE_EXCEPTIONS = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///english_db1.db'
+    PROPAGATE_EXCEPTIONS = os.getenv('PROPAGATE_EXCEPTIONS')
+    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')

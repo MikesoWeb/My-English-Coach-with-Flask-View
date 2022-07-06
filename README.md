@@ -1,31 +1,44 @@
-Flask English App to Flask View
+My English Coach on Flask View
 
-    for %i in (__init__ forms models views settings) do notepad %i.py
+![Image_alt](https://sun1.userapi.com/sun1-23/s/v1/ig2/KNHIgxcorRJxnGcSG2fk-JpuEhc97DYxnB9TycC2ILZukM6nnK1GVtAzIcn6zy0mEB233GKME69R-Wsi5Kws5D5D.jpg?size=1280x690&quality=96&type=album)
 
-    
-    pip install flask flask-sqlalchemy email-validator flask-wtf python-dotenv
 
-    
-Hello @TutorialWarrior9776 my suggestion is:
+Цель приложения:
 
-Step 1: Install virtualenv,
+    Показать работу Flask View на реальном примере работающего веб-приложения на flask
+    Переписать своё старое приложение на flask, использующее ORM peewee
 
-pip install virtualenv
 
-Step 2: Create env
+Используются модули:
 
-virtualenv -p python3.8 NAME_ENV
+    flask
+    flask-migrate
+    flask-sqlalchemy
+    flask-msearch
+    bootstrap-flask
+    python-dotenv
 
-Step 3: Activate env and Install requirements.txt (file generated local machine contains module flask_migrate)
 
-source NAME_ENV/bin/active
+Зависимости:
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
-Step 4: Set your env path in the section (web) of pythonanywhere, that's all;
+Публикую базу данных, хотя в идеальном мире она должна находиться в файле .gitignore
+Так же публикую файл .env с настройками, который должен так же находиться в .gitignore
 
-https://help.pythonanywhere.com/pages/Virtualenvs/
 
-(Section: Step 3: Configure your app to use this virtualenv)
+Для публикации на heroku
 
-Hope this helps ;)
+    Procfile
+    pip install gunicorn
+
+
+- [Ролик о Flask View] (https://github.com/MikesoWeb/flask_view_CRUD_app)
+- [Сценарий ролика] (EMPTY)
+
+- [пост ВК] (https://vk.com/python_for_me?w=wall-184890296_694%2Fall)
+
+
+
+    [Михаил Терехов 2022]  
+
