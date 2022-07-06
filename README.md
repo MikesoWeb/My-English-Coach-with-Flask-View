@@ -38,6 +38,8 @@ My English Coach on Flask View
    2. [Ролик по этому приложению] (EMPTY)
    3. [Git repo] (https://github.com/MikesoWeb/My-English-Coach-with-Flask-View)
    4. [Пост ВК] (https://vk.com/python_for_me?w=wall-184890296_694%2Fall)
+   5. [На pythonanywhere] (http://doyouknow.pythonanywhere.com/)
+   6. [На heroku] (https://my-english-coach.herokuapp.com/)
 
 
 
