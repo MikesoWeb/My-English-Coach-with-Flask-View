@@ -32,11 +32,12 @@ My English Coach on Flask View
     Procfile
     pip install gunicorn
 
+Ссылки:
 
-- [Ролик о Flask View] (https://github.com/MikesoWeb/flask_view_CRUD_app)
-- [Сценарий ролика] (EMPTY)
-
-- [пост ВК] (https://vk.com/python_for_me?w=wall-184890296_694%2Fall)
+   1. [Ролик о Flask View] (https://github.com/MikesoWeb/flask_view_CRUD_app)
+   2. [Ролик по этому приложению] (EMPTY)
+   3. [Git repo] (https://github.com/MikesoWeb/My-English-Coach-with-Flask-View)
+   4. [Пост ВК] (https://vk.com/python_for_me?w=wall-184890296_694%2Fall)
 
 
 
