@@ -1,11 +1,9 @@
 from english import app_ctx
-from english.views import IndexView, AboutView, AddView, ChangeView, DeleteView, ShowView
+from english.views import IndexView, AddView, ChangeView, DeleteView, AboutView, ShowView
 
 app_ctx.add_url_rule('/',
                      view_func=IndexView.as_view(name='index',
                                                  template_name='english/index.html', title='Главная страница'))
-app_ctx.add_url_rule('/about', view_func=AboutView.as_view(name='about',
-                                                           template_name='english/about.html', title='О проекте'))
 
 app_ctx.add_url_rule('/add', view_func=AddView.as_view(name='add',
                                                        template_name='english/add.html', title='Добавить запись'))
@@ -21,3 +19,6 @@ app_ctx.add_url_rule('/delete', view_func=DeleteView.as_view(name='delete',
 app_ctx.add_url_rule('/show', view_func=ShowView.as_view(name='show',
                                                          template_name='english/show.html',
                                                          title='Посмотреть данные'))
+
+app_ctx.add_url_rule('/about', view_func=AboutView.as_view(name='about',
+                                                           template_name='english/about.html', title='О проекте'))

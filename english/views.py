@@ -1,19 +1,18 @@
+from flask import render_template, request, Markup, url_for, flash, redirect
 from flask.views import View, MethodView
-from markupsafe import Markup
 from sqlalchemy.exc import IntegrityError
 
-from english import app_ctx
-from english.models import English, db
-from flask import render_template, request, flash, url_for, redirect
+from english import English, app_ctx, db
+from sqlalchemy.sql.expression import func
 
 
 @app_ctx.errorhandler(404)
-def page_not_found(e):
+def page_not_found_404(e):
     return render_template('english/404.html')
 
 
 @app_ctx.errorhandler(500)
-def page_not_found(e):
+def page_not_found_500(e):
     return render_template('english/500.html')
 
 
@@ -23,14 +22,13 @@ class IndexView(View):
         self.title = title
 
     def dispatch_request(self):
-        count = English.query.count()
-        from sqlalchemy.sql.expression import func
-        random_word = English.query.order_by(func.random()).first()
-        return render_template(self.template_name, title=self.title, count=count, random_word=random_word)
+        count_phrase = English.query.count()
+        random_phrase = English.query.order_by(func.random()).first()
+        return render_template(self.template_name, title=self.title, count_phrase=count_phrase,
+                               random_phrase=random_phrase)
 
 
 class AddView(MethodView):
-
     def __init__(self, template_name, title):
         self.template_name = template_name
         self.title = title
@@ -39,20 +37,18 @@ class AddView(MethodView):
         return render_template(self.template_name, title=self.title)
 
     def post(self):
-        if request.method == 'POST':
-            word = request.form['word'].capitalize()
-            translate = request.form['translate'].capitalize()
-            print(word, translate)
-            try:
-                add_word = English(word=word, translate=translate)
-                db.session.add(add_word)
-                db.session.commit()
-                message = Markup(f'Слово <mark>{word}</mark> и его перевод <mark>{translate}</mark> добавлено')
-                flash(message, category='success')
-                return redirect(url_for('add'))
+        word = request.form['word'].capitalize()
+        translate = request.form['translate'].capitalize()
+        try:
+            add_phrase = English(word=word, translate=translate)
+            db.session.add(add_phrase)
+            db.session.commit()
+            message = Markup(f'Слово <mark>{word}</mark> и его перевод <mark>{translate}</mark> добавлено')
+            flash(message, category='success')
+            return redirect(url_for('add'))
 
-            except IntegrityError:
-                flash(f'Слово {word} в базе существует!', category='danger')
+        except IntegrityError:
+            flash(f'Слово {word} в базе существует!', category='danger')
 
         return render_template(self.template_name, title=self.title)
 
@@ -67,18 +63,17 @@ class ChangeView(MethodView):
         return render_template(self.template_name, title=self.title)
 
     def post(self):
-        if request.method == 'POST':
-            word = request.form['word'].capitalize()
-            word_update = English.query.filter_by(word=word).first()
-            if word_update:
-                translate_update = request.form['translate']
-                word_update.translate = translate_update
-                db.session.commit()
-                message = Markup(f'У слова <mark>{word}</mark> был обновлен перевод на <mark>{translate_update}</mark>')
-                flash(message, category='warning')
-            else:
-                message = Markup(f'Слово <mark>{word}</mark> не найдено в базе!')
-                flash(message, category='error')
+        word = request.form['word'].capitalize()
+        word_update = English.query.filter_by(word=word).first()
+        if word_update:
+            translate_update = request.form['translate']
+            word_update.translate = translate_update
+            db.session.commit()
+            message = Markup(f'У слова <mark>{word}</mark> был обновлен перевод на <mark>{translate_update}</mark>')
+            flash(message, category='warning')
+        else:
+            message = Markup(f'Слово <mark>{word}</mark> не найдено в базе!')
+            flash(message, category='error')
 
         return render_template(self.template_name, title=self.title)
 
@@ -92,18 +87,17 @@ class DeleteView(MethodView):
         return render_template(self.template_name, title=self.title)
 
     def post(self):
-        if request.method == 'POST':
-            word = request.form['word']
-            print(word)
-            word_delete = English.query.filter_by(word=word).first()
-            if word_delete:
-                db.session.delete(word_delete)
-                db.session.commit()
-                message = Markup(f'Слово <mark>{word}</mark> удалено!')
-                flash(message, category='success')
-            else:
-                message = Markup(f'Слово <mark>{word}</mark> в базе не найдено!')
-                flash(message, category='error')
+        word = request.form['word']
+        print(word)
+        word_delete = English.query.filter_by(word=word).first()
+        if word_delete:
+            db.session.delete(word_delete)
+            db.session.commit()
+            message = Markup(f'Слово <mark>{word}</mark> удалено!')
+            flash(message, category='success')
+        else:
+            message = Markup(f'Слово <mark>{word}</mark> в базе не найдено!')
+            flash(message, category='error')
 
         return render_template(self.template_name, title=self.title)
 
