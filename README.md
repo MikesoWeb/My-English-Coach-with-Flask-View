@@ -1,4 +1,4 @@
-My English Coach on Flask View
+My English Coach on Flask View with PostgreSQL and Sqlite
 
 ![Image_alt](https://sun1.userapi.com/sun1-23/s/v1/ig2/KNHIgxcorRJxnGcSG2fk-JpuEhc97DYxnB9TycC2ILZukM6nnK1GVtAzIcn6zy0mEB233GKME69R-Wsi5Kws5D5D.jpg?size=1280x690&quality=96&type=album)
 
@@ -6,6 +6,7 @@ My English Coach on Flask View
 
     Показать работу Flask View на реальном примере работающего веб-приложения на flask
     Переписать своё старое приложение на flask, использующее ORM peewee
+    Работа как с PostgreSQL так и с Sqlite
 
 Используются модули:
 
