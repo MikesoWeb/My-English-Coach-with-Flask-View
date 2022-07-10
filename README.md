@@ -48,7 +48,7 @@ My English Coach on Flask View with PostgreSQL and Sqlite
 Ссылки:
 
 1. [Ролик о Flask View] (https://github.com/MikesoWeb/flask_view_CRUD_app)
-2. [Ролик по этому приложению] (EMPTY)
+2. [Ролик по этому приложению] (https://youtu.be/ve9xEMOQKeQ)
 3. [Git repo] (https://github.com/MikesoWeb/My-English-Coach-with-Flask-View)
 4. [Пост ВК] (https://vk.com/python_for_me?w=wall-184890296_694%2Fall)
 5. [На pythonanywhere] (http://doyouknow.pythonanywhere.com/)
