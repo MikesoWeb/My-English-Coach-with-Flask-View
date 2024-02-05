@@ -5,9 +5,9 @@ My English Coach on Flask View with PostgreSQL and Sqlite
 
 Цель приложения:
 
-    Показать работу Flask View на реальном примере работающего веб-приложения на flask
-    Переписать своё старое приложение на flask, использующее ORM peewee
-    Работа как с PostgreSQL так и с Sqlite
+    - Показать работу Flask View на реальном примере работающего веб-приложения на flask
+    - Переписать своё старое приложение на flask, использующее ORM peewee
+    - Показать работу как с PostgreSQL так и с Sqlite
 
 
 Используются модули:
@@ -36,19 +36,21 @@ My English Coach on Flask View with PostgreSQL and Sqlite
 
     Создадим пакет english (папка english с файлом __init__.py внутри)
 
-    cd english &
+    md english & cd english &
     md templates static & cd static &
     md css favicon img_404 img_500 search_404 &
     cd css & echo *{}> style.css & cd .. & cd ..&
     cd templates & md english & cd .. & cd .. &
     echo from flask import Flask >  run.py &
     echo .> .env & echo .> .gitignore
-    
-    for %i in (models routes views settings) do notepad %i.py
+
+    Эту строку с циклом после создания основной структуры
+    `for %i in (models routes views settings) do notepad %i.py`
 
 
-Публикую базу данных, хотя в идеальном мире она должна находиться в файле .gitignore
-Так же публикую файл .env с настройками, который должен так же находиться в .gitignore
+Публикую базу данных, хотя в идеальном мире она должна находиться в файле `.gitignore`
+Так же публикую файл `.env` с настройками, который не должен публиковаться в репозитории , а должен так же находиться в `.gitignore`. 
+Но здесь я его публикую для примера использования переменных окружения проекта. Обычно это публикуется в файле `.env-example`
 
 
 Для публикации на heroku
@@ -63,8 +65,6 @@ My English Coach on Flask View with PostgreSQL and Sqlite
 2. [Ролик по этому приложению] (https://youtu.be/ve9xEMOQKeQ)
 3. [Git repo] (https://github.com/MikesoWeb/My-English-Coach-with-Flask-View)
 4. [Пост ВК] (https://vk.com/python_for_me?w=wall-184890296_694%2Fall)
-5. [На pythonanywhere] (http://doyouknow.pythonanywhere.com/)
-6. [На heroku] (https://my-english-coach.herokuapp.com/)
 
     [Михаил Терехов 2022]  
 
